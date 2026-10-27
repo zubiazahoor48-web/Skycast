@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skycast – Weather App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Tailwind handles layout utilities; preflight is off so it doesn't reset Bootstrap -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>tailwind.config = { corePlugins: { preflight: false } };</script>
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+  <main class="container py-4 app">
+
+    <header class="flex flex-wrap items-center justify-between gap-3 mb-4">
+      <h1 class="h3 fw-bold mb-0">Skycast</h1>
+      <div class="btn-group" role="group" aria-label="Temperature unit">
+        <input type="radio" class="btn-check" name="unit" id="unitC" value="c" checked>
+        <label class="btn btn-outline-navy btn-sm" for="unitC">°C</label>
+        <input type="radio" class="btn-check" name="unit" id="unitF" value="f">
+        <label class="btn btn-outline-navy btn-sm" for="unitF">°F</label>
+      </div>
+    </header>
+
+    <!-- Search -->
+    <form id="searchForm" class="mb-2" role="search">
+      <div class="input-group">
+        <input type="search" class="form-control" id="city" placeholder="Search for a city" aria-label="City name" required>
+        <button class="btn btn-teal" type="submit">Search</button>
+        <button class="btn btn-outline-navy" type="button" id="geoBtn">Use my location</button>
+      </div>
+    </form>
+
+    <div class="list-group mb-2 d-none" id="suggestions" aria-label="Matching places"></div>
+    <div class="flex flex-wrap gap-2 mb-4" id="recent"></div>
+
+    <div class="alert alert-danger d-none" id="error" role="alert"></div>
+    <div class="text-secondary" id="status" role="status" aria-live="polite"></div>
+
+    <!-- Current weather -->
+    <section class="current d-none" id="current" aria-label="Current weather">
+      <div class="flex flex-wrap justify-between items-center gap-4">
+        <div>
+          <div class="place" id="placeName"></div>
+          <div class="temp" id="temp"></div>
+          <div class="desc" id="desc"></div>
+        </div>
+        <div class="icon" id="icon" aria-hidden="true"></div>
+      </div>
+      <div class="grid grid-cols-3 gap-3 mt-4 details">
+        <div><span>Feels like</span><strong id="feels"></strong></div>
+        <div><span>Humidity</span><strong id="humidity"></strong></div>
+        <div><span>Wind</span><strong id="wind"></strong></div>
+      </div>
+    </section>
+
+    <!-- Forecast -->
+    <section class="mt-4 d-none" id="forecastWrap" aria-labelledby="fh">
+      <h2 class="h6 fw-bold mb-3" id="fh">7-day forecast</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3" id="forecast"></div>
+    </section>
+
+    <p class="text-secondary small mt-4 mb-0">Weather data by Open-Meteo.</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+:root {
+  --navy: #0f1b3d;
+  --teal: #0f766e;
+  --teal-dark: #0b5e58;
+  --indigo: #4f46e5;
+  --sky: #eaf1fb;
+  --line: #d9e2f3;
+}
+
+body {
+  font-family: "Outfit", system-ui, sans-serif;
+  background: var(--sky);
+  color: var(--navy);
+  min-height: 100vh;
+}
+
+.app { max-width: 920px; }
+
+.btn-teal {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--teal);
+  --bs-btn-border-color: var(--teal);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--teal-dark);
+  --bs-btn-hover-border-color: var(--teal-dark);
+}
+.btn-outline-navy {
+  --bs-btn-color: var(--navy);
+  --bs-btn-border-color: #9fb0d6;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--navy);
+  --bs-btn-hover-border-color: var(--navy);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--navy);
+}
+.btn-check:checked + .btn-outline-navy { background: var(--navy); border-color: var(--navy); color: #fff; }
+
+.form-control:focus {
+  border-color: var(--indigo);
+  box-shadow: 0 0 0 .2rem rgba(79, 70, 229, .18);
+}
+.btn:focus-visible, .list-group-item:focus-visible, .chip:focus-visible { outline: 2px solid var(--indigo); outline-offset: 2px; }
+
+.chip {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 999px;
+  padding: .2rem .8rem;
+  font-size: .85rem;
+  color: var(--navy);
+}
+.chip:hover { border-color: var(--indigo); }
+
+/* Current weather card */
+.current {
+  background: var(--navy);
+  color: #fff;
+  border-radius: 18px;
+  padding: 1.75rem;
+}
+.place { font-size: 1.1rem; font-weight: 500; color: #b8c6ea; }
+.temp { font-size: 4.5rem; font-weight: 700; line-height: 1; letter-spacing: -.03em; margin: .25rem 0; }
+.desc { font-size: 1.1rem; color: #7ee0d3; }
+.icon { font-size: 5rem; line-height: 1; }
+.details > div { background: rgba(255, 255, 255, .07); border-radius: 12px; padding: .75rem 1rem; }
+.details span { display: block; font-size: .8rem; color: #b8c6ea; }
+.details strong { font-size: 1.1rem; font-weight: 600; }
+
+/* Forecast */
+.day {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: .9rem .5rem;
+  text-align: center;
+}
+.day .name { font-weight: 600; }
+.day .ico { font-size: 1.9rem; margin: .25rem 0; }
+.day .hi { font-weight: 600; }
+.day .lo { color: #6b7aa3; }
+.day .rain { font-size: .78rem; color: var(--indigo); }
+
+@media (max-width: 576px) {
+  .temp { font-size: 3.5rem; }
+  .icon { font-size: 3.5rem; }
+}
